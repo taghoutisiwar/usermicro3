@@ -1,0 +1,48 @@
+<div class="container mt-5">
+    <div class="card shadow">
+      <div class="card-header text-black">
+        <h3 class="mb-0">Modify Employees</h3>
+      </div>
+      <form class="p-4">
+        <div class="form-row ">
+          <!-- Hidden Field for Drug ID -->
+          <input hidden type="number" [(ngModel)]="currentEmployee.id" name="id" />
+          <!-- Nom -->
+          <div class="form-group col-md-2">
+            <label for="Nom">Nom</label>
+            <input type="text" [(ngModel)]="currentEmployee.Nom" name="Nom" class="form-control" id="Nom" placeholder="Employee nom" />
+          </div>
+          <!-- Prenom -->
+          <div class="form-group col-md-2">
+            <label for="brandNames">Prenom</label>
+            <input type="text" [(ngModel)]="currentEmployee.Prenom" name="Prenom" class="form-control" id="Prenom" placeholder="Employee Prenom" />
+          </div>
+          <!-- Dosage -->
+          <div class="form-group col-md-2">
+            <label for="Salaire">Salaire</label>
+            <input type="text" [(ngModel)]="currentEmployee.Salaire" name="Salaire" class="form-control" id="Salaire" placeholder="Salaire " />
+          </div>
+          <!-- Drug Class -->
+          <div class="form-group col-md-2">
+            <label for="updateidt">Team</label>
+            <select class="form-control" id="updateidt" name="updateidt" [(ngModel)]="updateidt">
+              <option *ngFor="let d of Team" [value]="d.idt">
+                {{d.nomTeam}}
+              </option>
+            </select>
+          </div>
+          <!-- Date -->
+          <div class="form-group col-md-2">
+            <label for="DateRec">Date De Recrutement </label>
+            <input type="date" [ngModel]="currentEmployee.DateRec | date: 'yyyy-MM-dd'"
+              (ngModelChange)="currentEmployee.DateRec = $event" name="DateRec" class="form-control" id="DateRec" />
+          </div>
+        </div>
+        <div class="form-row text-center">
+          <div class="col ">
+            <button type="submit" (click)="updateEmployee()" class="btn "><img width="30" height="30" src="https://img.icons8.com/ios-glyphs/30/edit-file.png" alt="edit-file"/></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
